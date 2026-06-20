@@ -1,8 +1,14 @@
-# 🌌 Magic — Sirius Ecosystem
+<div align="center">
+  
+  <img src="https://github.com/user-attachments/assets/91c89b84-8d38-48d6-960b-7cc40d619cad" alt="MagicOS White" width="400" />
 
-¡Bienvenido al repositorio oficial de la plataforma web de **Magic**! 
+</div>
 
-Este proyecto comprende el desarrollo de la aplicación web oficial de nuestro ecosistema tecnológico de vanguardia, enfocado en la privacidad radical, el procesamiento local y el hardware honesto. La plataforma está diseñada bajo una arquitectura Full-Stack utilizando JavaScript como lenguaje principal.
+---
+
+¡Bienvenido al repositorio oficial de la plataforma web de **MagicOS**! 
+
+Este proyecto comprende el desarrollo de la aplicación web oficial de nuestro sistema operativo de vanguardia, enfocado en la privacidad radical y el procesamiento local. La plataforma está diseñada bajo una arquitectura Full-Stack utilizando JavaScript como lenguaje principal.
 
 ---
 
@@ -10,7 +16,7 @@ Este proyecto comprende el desarrollo de la aplicación web oficial de nuestro e
 
 ### 👤 Nombre del Negocio
 
-**Magic** (Línea de Hardware Estrella: **Sirius**)
+**MagicOS**
 
 ### 🛑 El Problema que Resuelve
 
@@ -30,9 +36,12 @@ En la era digital actual, los usuarios viven en "una casa con paredes de vidrio"
 Nuestra solución no es solo una aplicación; es un ecosistema cerrado de hardware y software diseñado para trabajar exclusivamente para el usuario:
 
 1. **MagicOS:** Sistema operativo premium con interfaz minimalista e intuitiva, cuyo núcleo está diseñado para el procesamiento estrictamente local e impenetrable.
-2. **Sirius Laptop:** Hardware modular diseñado bajo la filosofía de "bloques de Lego". Componentes fácilmente reparables y actualizables para combatir la obsolescencia programada.
-3. **Chip N1 Kinetic™:** Arquitectura de silicio propia y optimizada para ejecutar tareas complejas de forma local, eficiente y veloz.
-4. **BlackBox Cloud\*:** El puente seguro. Un servicio de almacenamiento en la nube tan intuitivo y transparente como Google Drive, pero blindado con cifrado de extremo a extremo propiedad exclusiva del usuario.
+
+### _Proyectos futuros_
+
+1. **Sirius Laptop:** Hardware modular diseñado bajo la filosofía de "bloques de Lego". Componentes fácilmente reparables y actualizables para combatir la obsolescencia programada.
+2. **Chip N1 Kinetic™:** Arquitectura de silicio propia y optimizada para ejecutar tareas complejas de forma local, eficiente y veloz.
+3. **BlackBox Cloud\*:** El puente seguro. Un servicio de almacenamiento en la nube tan intuitivo y transparente como Google Drive, pero blindado con cifrado de extremo a extremo propiedad exclusiva del usuario.
 
 ---
 
@@ -56,4 +65,9 @@ Este proyecto está estructurado como una aplicación **Full-Stack** integrada, 
 
 ---
 
-_With ♥️ by PGTM_
+<div align="center">
+  
+  _With ♥️ by PGTM_
+
+</div>
+
