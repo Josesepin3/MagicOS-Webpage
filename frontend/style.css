@@ -125,36 +125,36 @@ a {
 	max-width: 100%;
 }
 
-.step-card {
-	background: rgba(255, 255, 255, 0.08);
-	border-radius: 16px;
-	padding: 18px 20px;
-	min-height: 120px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	flex-direction: column;
-	text-align: center;
-	gap: 18px;
-	transition: background-color 0.2s ease, transform 0.2s ease;
+.steps-grid li {
+	background: rgba(255, 255, 255, 0.06);
+	border-radius: 12px;
+	padding: 18px 12px;
+	min-height: 96px;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	align-items: start;
+	justify-items: center;
+	gap: 8px;
+	transition: background 0.18s ease, transform 0.18s ease;
 }
 
-.step-number {
-	width: 54px;
-	height: 54px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 1.25rem;
-	font-weight: 700;
-	background: rgba(255, 255, 255, 0.08);
-	border-radius: 50%;
-}
-
-.step-card:hover {
-	background: rgba(255, 255, 255, 0.14);
+.steps-grid li:hover {
+	background: rgba(255, 255, 255, 0.12);
 	transform: translateY(-3px);
 }
+
+.steps-grid .step-number {
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255,255,255,0.08);
+	border-radius: 50%;
+	font-weight: 700;
+}
+
+.steps-grid li p { margin: 0; text-align: center; }
 
 footer {
 	background: rgba(129, 61, 156, 0.92);
@@ -208,6 +208,126 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.feature-icon-img {
+	width: 48px;
+	height: 48px;
+	display: block;
+}
+
+.card-title {
+	margin: 0;
+	font-size: 1.05rem;
+}
+
+.card-body {
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	margin-top: 8px;
+	transition: max-height 0.36s cubic-bezier(.2,.8,.2,1), opacity 0.28s ease;
+}
+
+.card-desc {
+	margin: 0;
+	line-height: 1.5;
+	font-size: 0.95rem;
+}
+
+.card-title {
+	transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.25s ease;
+	overflow: hidden;
+}
+
+.feature-media,
+.feature-icon,
+.feature-icon-img,
+.step-number {
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.feature-card.expanded .card-body {
+	max-height: 420px;
+	opacity: 1;
+}
+
+.feature-card.expanded .card-title {
+	opacity: 0;
+	transform: translateY(-6px);
+}
+
+.feature-card.expanded .feature-media {
+	opacity: 0;
+	transform: translateY(-8px) scale(0.96);
+	pointer-events: none;
+}
+
+.feature-card.size-small { min-height: 160px; }
+.feature-card.size-medium { min-height: 220px; }
+.feature-card.size-large { min-height: 300px; }
+
+/* Allow a feature card to span multiple grid columns (kanban-like) */
+.feature-card.span-2 {
+	grid-column: span 2;
+}
+
+/* Internal two-column layout for large visual cards */
+.card-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 18px;
+	width: 100%;
+	height: 100%;
+}
+
+/* Larger span variant: span 3 columns and give more space to visual */
+.feature-card.span-3 {
+	grid-column: span 3;
+}
+
+.feature-card.span-3 .card-grid {
+	grid-template-columns: 1fr 2fr; /* text = 1/3, visual = 2/3 */
+}
+
+/* On narrow screens, collapse span-3 to single column for readability */
+@media (max-width: 900px) {
+	.feature-card.span-3 { grid-column: span 1; }
+	.feature-card.span-3 .card-grid { grid-template-columns: 1fr; }
+	.feature-card.span-3 .card-visual { order: -1; } /* visual on top on small screens */
+}
+
+.card-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between; /* title top, description bottom */
+	align-items: flex-start;
+	padding: 6px 0;
+}
+
+/* Ensure the title and description in the span-2 / span-3 cards are left-aligned */
+.feature-card.span-2 .card-content,
+.feature-card.span-3 .card-content { align-items: stretch; }
+.feature-card.span-2 .card-title,
+.feature-card.span-2 .card-body,
+.feature-card.span-2 .card-desc,
+.feature-card.span-3 .card-title,
+.feature-card.span-3 .card-body,
+.feature-card.span-3 .card-desc { text-align: left; align-self: stretch; }
+
+.card-visual {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px; /* respect card padding */
+}
+
+.card-visual img {
+	max-width: 100%;
+	max-height: calc(100% - 24px);
+	width: auto;
+	height: auto;
+	object-fit: contain;
 }
 
 .feature-icon {

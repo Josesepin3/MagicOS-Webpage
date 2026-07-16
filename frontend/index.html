@@ -33,41 +33,73 @@
         <section id="funciones">
             <h2>Funciones</h2>
             <ul class="features-grid">
-                <li class="feature-card">
-                    <div class="feature-media">
-                        <span class="feature-icon" aria-hidden="true">🧭</span>
+                <li class="feature-card size-medium span-3">
+                    <div class="card-grid">
+                        <div class="card-content">
+                            <h3 class="card-title">Interfaz de usuario intuitiva</h3>
+                            <div class="card-body">
+                                <p class="card-desc">Interfaz limpia y accesible que reduce la curva de aprendizaje.</p>
+                            </div>
+                        </div>
+                        <div class="card-visual">
+                            <img src="./img/shell.svg" alt="shell" />
+                        </div>
                     </div>
-                    <p>Interfaz de usuario intuitiva</p>
                 </li>
-                <li class="feature-card">
+                <li class="feature-card size-small">
                     <div class="feature-media">
-                        <span class="feature-icon" aria-hidden="true">🧩</span>
+                        <span class="feature-icon" aria-hidden="true">
+                            <img class="feature-icon-img" src="./img/icon-compat.svg" alt="icon">
+                        </span>
                     </div>
-                    <p>Compatibilidad con una amplia gama de aplicaciones</p>
+                    <h3 class="card-title">Compatibilidad amplia</h3>
+                    <div class="card-body">
+                        <p class="card-desc">Funciona con una gran variedad de aplicaciones y formatos.</p>
+                    </div>
                 </li>
-                <li class="feature-card">
+                <li class="feature-card size-large">
                     <div class="feature-media">
-                        <span class="feature-icon" aria-hidden="true">🔒</span>
+                        <span class="feature-icon" aria-hidden="true">
+                            <img class="feature-icon-img" src="./img/icon-security.svg" alt="icon">
+                        </span>
                     </div>
-                    <p>Seguridad y privacidad como prioridad</p>
+                    <h3 class="card-title">Seguridad y privacidad</h3>
+                    <div class="card-body">
+                        <p class="card-desc">Controles de privacidad integrados y cifrado para tus datos.</p>
+                    </div>
                 </li>
-                <li class="feature-card">
+                <li class="feature-card size-medium">
                     <div class="feature-media">
-                        <span class="feature-icon" aria-hidden="true">⚡</span>
+                        <span class="feature-icon" aria-hidden="true">
+                            <img class="feature-icon-img" src="./img/icon-performance.svg" alt="icon">
+                        </span>
                     </div>
-                    <p>Rendimiento optimizado para una experiencia fluida</p>
+                    <h3 class="card-title">Rendimiento optimizado</h3>
+                    <div class="card-body">
+                        <p class="card-desc">Optimizado para ofrecer una experiencia fluida en hardware realista.</p>
+                    </div>
                 </li>
-                <li class="feature-card">
+                <li class="feature-card size-small">
                     <div class="feature-media">
-                        <span class="feature-icon" aria-hidden="true">🔄</span>
+                        <span class="feature-icon" aria-hidden="true">
+                            <img class="feature-icon-img" src="./img/icon-updates.svg" alt="icon">
+                        </span>
                     </div>
-                    <p>Actualizaciones regulares y soporte activo</p>
+                    <h3 class="card-title">Actualizaciones regulares</h3>
+                    <div class="card-body">
+                        <p class="card-desc">Soporte activo y mejoras frecuentes basadas en la comunidad.</p>
+                    </div>
                 </li>
-                <li class="feature-card">
+                <li class="feature-card size-medium">
                     <div class="feature-media">
-                        <span class="feature-icon" aria-hidden="true">🌐</span>
+                        <span class="feature-icon" aria-hidden="true">
+                            <img class="feature-icon-img" src="./img/icon-open.svg" alt="icon">
+                        </span>
                     </div>
-                    <p>Open source y colaborativo</p>
+                    <h3 class="card-title">Open source</h3>
+                    <div class="card-body">
+                        <p class="card-desc">Código abierto y colaboración transparente entre contribuyentes.</p>
+                    </div>
                 </li>
             </ul>
         </section>
@@ -76,23 +108,23 @@
             <h2>Involucrese</h2>
             <h3>Si quieres involucrarte con MagicOS, aquí está cómo puedes contribuir.</h3>
             <ul class="steps-grid">
-                <li class="step-card">
+                <li>
                     <span class="step-number">1</span>
                     <p>Únete a nuestra comunidad en línea y participa en discusiones.</p>
                 </li>
-                <li class="step-card">
+                <li>
                     <span class="step-number">2</span>
                     <p>Contribuye al desarrollo de MagicOS a través de GitHub.</p>
                 </li>
-                <li class="step-card">
+                <li>
                     <span class="step-number">3</span>
                     <p>Ayuda a traducir MagicOS a otros idiomas.</p>
                 </li>
-                <li class="step-card">
+                <li>
                     <span class="step-number">4</span>
                     <p>Comparte tus ideas y sugerencias para mejorar MagicOS.</p>
                 </li>
-                <li class="step-card">
+                <li>
                     <span class="step-number">5</span>
                     <p>Participa en eventos y hackathons organizados por la comunidad.</p>
                 </li>
@@ -104,6 +136,26 @@
     <footer>
         <p>&copy; 2024 MagicOS. All rights reserved. Free-to-use License</p>
     </footer>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function setupGrid(gridSelector, cardSelector) {
+                const grid = document.querySelector(gridSelector);
+                if (!grid) return;
+                grid.addEventListener('click', (e) => {
+                    const card = e.target.closest(cardSelector);
+                    if (!card || !grid.contains(card)) return;
+                    const currently = grid.querySelector('.expanded');
+                    if (currently && currently !== card) {
+                        currently.classList.remove('expanded');
+                    }
+                    card.classList.toggle('expanded');
+                });
+            }
+            setupGrid('.features-grid', '.feature-card');
+            setupGrid('.steps-grid', '.step-card');
+        });
+        </script>
 
 </body>
 </html>
