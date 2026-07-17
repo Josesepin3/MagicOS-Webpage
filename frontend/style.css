@@ -350,21 +350,28 @@ footer {
 	.card-grid.variant-2x2 { grid-template-rows: auto auto auto; }
 }
 
+
 .feature-card {
-	background: rgba(255, 255, 255, 0.06);
-	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.09); /* ligeramente más claro */
+	border: none; /* remove border by default */
 	border-radius: 12px;
 	min-height: 220px;
 	padding: 24px 18px;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	transition: background-color 0.2s ease, transform 0.2s ease;
+	transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.18s ease;
 }
 
 .feature-card:hover {
-	background-color: rgba(255, 255, 255, 0.12);
+	background-color: rgba(255, 255, 255, 0.12); /* hover más visible manteniendo sutileza */
 	transform: translateY(-3px);
+	/* no border on hover per design */
+}
+
+/* show border when card is expanded or highlighted */
+.feature-card.expanded {
+	border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .feature-media {
