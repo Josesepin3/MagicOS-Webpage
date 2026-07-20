@@ -10,7 +10,11 @@
 
     <header class="site-header">
         <h1 class="site-title">MagicOS</h1>
-        <nav class="navbar">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" title="Mostrar menú">
+            <span class="menu-icon">☰</span>
+            <span class="visually-hidden">Mostrar menú</span>
+        </button>
+        <nav id="main-nav" class="navbar" role="navigation">
             <ul>
                 <li><a href="#que_es">Que es MagicOS?</a></li>
                 <li><a href="#funciones">Funciones</a></li>
@@ -77,8 +81,8 @@
                     </div>
                 </li>
                 <li class="feature-card feature-card-compat" style="grid-column: 4 / span 1; grid-row: 1 / span 2;">
-                    <div class="card-grid variant-2x2">
-                        <div class="card-visual top">
+                    <div class="card-grid">
+                        <div class="card-visual">
                             <img src="./img/apps.svg" alt="apps" />
                         </div>
                         <div class="card-content">
@@ -185,6 +189,9 @@
             const manualGrid = document.querySelector('.manual-features-grid');
             if (manualGrid) {
                 manualGrid.addEventListener('click', (e) => {
+                    if (window.matchMedia('(max-width: 1060px)').matches) {
+                        return; // disable card clicks in responsive list mode
+                    }
                     const card = e.target.closest('.feature-card');
                     if (!card || !manualGrid.contains(card)) return;
                     const currently = manualGrid.querySelector('.expanded');
@@ -236,6 +243,56 @@
 
             // resize on window resize
             window.addEventListener('resize', debounce(() => resizeAllGridItems('.features-grid'), 120));
+
+            // Responsive navbar toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', String(!expanded));
+                    mainNav.classList.toggle('open');
+                });
+
+                // Close the mobile menu and reset the toggle when switching to desktop
+                const mq = window.matchMedia('(min-width:601px)');
+                function mqHandler(e) {
+                    if (e.matches) {
+                        mainNav.classList.remove('open');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
+                if (mq.addEventListener) mq.addEventListener('change', mqHandler); else mq.addListener(mqHandler);
+                mqHandler(mq);
+            }
+
+            // Align the menu toggle vertically with the site title on small screens
+            function alignMenuToggleToTitle() {
+                const siteHeader = document.querySelector('.site-header');
+                const siteTitle = document.querySelector('.site-title');
+                const toggle = document.querySelector('.menu-toggle');
+                if (!siteHeader || !siteTitle || !toggle) return;
+                if (!window.matchMedia('(max-width:600px)').matches) {
+                    // reset any inline top/transform when not mobile
+                    toggle.style.top = '';
+                    toggle.style.transform = '';
+                    return;
+                }
+                // header is positioned relative; compute title center relative to header
+                const headerRect = siteHeader.getBoundingClientRect();
+                const titleRect = siteTitle.getBoundingClientRect();
+                const titleCenter = titleRect.top - headerRect.top + (titleRect.height / 2);
+                // position toggle so its center aligns with title center using translateY(-50%)
+                const topForToggle = Math.max(6, Math.round(titleCenter));
+                toggle.style.top = topForToggle + 'px';
+                toggle.style.transform = 'translateY(-50%)';
+            }
+
+            // call on load and on resize / media changes
+            window.addEventListener('load', alignMenuToggleToTitle);
+            window.addEventListener('resize', debounce(alignMenuToggleToTitle, 80));
+            // also run when fonts are ready (affects sizing)
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(alignMenuToggleToTitle);
         });
         </script>
 
